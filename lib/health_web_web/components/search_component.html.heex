@@ -1,0 +1,72 @@
+<div class="space-y-5 overflow-hidden flex flex-col">
+  <h6 class="font-smb text-2xl">Bạn đang muốn tìm kiếm?</h6>
+  <form
+    phx-submit="search"
+    phx-change="change"
+    phx-target={@myself}
+    class="search_form"
+  >
+    <div class="absolute inset-y-0 left-0 pl-3 flex items-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-search h-5 w-5 text-slate-400"
+      >
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.3-4.3"></path>
+      </svg>
+    </div>
+    <input
+      name="search_key"
+      id="search_key"
+      class="flex h-10 w-full pl-10 pr-10 py-6 text-lg"
+      placeholder="Tìm kiếm..."
+      type="search"
+      phx-debounce="500"
+    />
+  </form>
+  <div>
+    <h3 class="text-sm font-medium text-slate-500 mb-3">Tìm kiếm phổ biến</h3>
+    <div class="flex flex-wrap gap-2">
+      <button class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full text-sm transition-colors">
+        Đau đầu
+      </button>
+      <button class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full text-sm transition-colors">
+        Mất ngủ
+      </button>
+      <button class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full text-sm transition-colors">
+        Viêm họng
+      </button>
+      <button class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full text-sm transition-colors">
+        Tiểu đường
+      </button>
+      <button class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full text-sm transition-colors">
+        Huyết áp cao
+      </button>
+      <button class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full text-sm transition-colors">
+        Stress
+      </button>
+      <button class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full text-sm transition-colors">
+        Đau lưng
+      </button>
+      <button class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full text-sm transition-colors">
+        Dị ứng
+      </button>
+    </div>
+  </div>
+  <div :if={@filtered_data != []} class="space-y-2 flex-auto overflow-y-auto">
+    <h3 class="text-sm font-medium text-slate-500 pb-3 sticky top-0 bg-white z-10">Kết quả tìm kiếm</h3>
+    <%= for item <- @filtered_data  do %>
+      <a class="search_item" href={"/health-consultation/#{CommonComponents.batch_string(item)}"} target="_blank">
+        <h4 class="font-medium text-slate-900"><%= item %></h4>
+      </a>
+    <% end %>
+  </div> 
+</div>

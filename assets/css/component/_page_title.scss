@@ -1,0 +1,20 @@
+.page_title {
+    @apply bg-gradient-to-r from-teal-500 to-blue-500 py-16 px-4;
+
+    .title {
+        @apply text-4xl font-bold text-white mb-4;
+    }
+
+    .desc {
+        @apply text-xl text-white/90 max-w-2xl mx-auto;
+    }
+
+    &__form  {
+        @apply max-w-2xl mx-auto relative;
+    }
+
+    .core_input {
+        @apply flex-1 py-4 px-6 text-gray-700 focus:outline-none h-[52px];
+        
+    }
+}

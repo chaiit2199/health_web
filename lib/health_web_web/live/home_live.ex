@@ -1,0 +1,18 @@
+defmodule HealthWebWeb.HomeLive do
+  use HealthWebWeb, :live_view
+
+  def mount(_params, _session, socket) do
+    diseases = socket.assigns.static_data
+
+    {:ok,
+     socket
+     |> assign(diseases: diseases)
+     |> assign(modal: nil)}
+  end
+
+  def handle_event("show_modal", %{"modal" => modal}, socket) do
+    {:noreply,
+     socket
+     |> assign(modal: modal)}
+  end
+end
