@@ -8,6 +8,7 @@ if config_env() == :prod do
   base_url = System.get_env("BASE_URL")
 
   config :health_web, HealthWebWeb.Endpoint,
+    server: true,
     url: [host: host, port: 443, scheme: "https"],
     http: [
       # Enable IPv6 and bind on all interfaces.
