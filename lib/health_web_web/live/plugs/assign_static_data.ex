@@ -7,9 +7,9 @@ defmodule HealthWebWeb.AssignStaticData do
   end
 
   defp fetch_diseases() do
-    base_url Application.get_env(:health_web, :base_url, [])
+    base_api = Application.get_env(:health_web, :base_url, [])
 
-    case HTTPoison.get("#{base_url}/diseases") do
+    case HTTPoison.get("#{base_api}/diseases") do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         diseases = Jason.decode!(body)
 
