@@ -2,7 +2,7 @@ defmodule HealthWebWeb.ConsultationDetailsLive do
   use HealthWebWeb, :live_view
   alias HealthWebWeb.CommonComponents
 
-  @api_url Application.get_env(:health_web, :base_url, [])
+
 
   def mount(_params, _session, socket) do
     Task.start(__MODULE__, :task_get_recent_post, [self()])
@@ -80,7 +80,8 @@ defmodule HealthWebWeb.ConsultationDetailsLive do
   end
 
   defp fetch_diseases_details(params) do
-    case HTTPoison.get("#{@api_url}/ai/?params=#{URI.encode(params)}") do
+    base_api = Application.get_env(:health_web, :base_url, [])
+    case HTTPoison.get("#{base_api}/ai/?params=#{URI.encode(params)}") do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         Jason.decode!(body)
 
@@ -93,7 +94,8 @@ defmodule HealthWebWeb.ConsultationDetailsLive do
   end
 
   defp fetch_recent_post() do
-    case HTTPoison.get("#{@api_url}/recent_diseases") do
+    base_api = Application.get_env(:health_web, :base_url, [])
+    case HTTPoison.get("#{base_api}/recent_diseases") do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         Jason.decode!(body)
       {:ok, %HTTPoison.Response{status_code: status_code}} ->
