@@ -7,12 +7,12 @@ defmodule HealthWeb.Application do
 
   @impl true
   def start(_type, _args) do
-    topologies = [
-      example: [
-        strategy: Cluster.Strategy.Epmd,
-        config: [hosts: [:"backend_pubsub@10.140.18.235"]],
-      ]
-    ]
+    # topologies = [
+    #   example: [
+    #     strategy: Cluster.Strategy.Epmd,
+    #     config: [hosts: [:"backend_pubsub@10.140.18.235"]],
+    #   ]
+    # ]
     children = [
       # Start the Telemetry supervisor
       HealthWebWeb.Telemetry,
@@ -23,8 +23,8 @@ defmodule HealthWeb.Application do
       # Start the Endpoint (http/https)
 
 
-      {Cluster.Supervisor, [topologies, [name: HealthWeb.ClusterSupervisor]]},
-      Supervisor.child_spec({Phoenix.PubSub, name: BackendPubsub.PubSub}, id: Trading.InternalPubSub),
+      # {Cluster.Supervisor, [topologies, [name: HealthWeb.ClusterSupervisor]]},
+      # Supervisor.child_spec({Phoenix.PubSub, name: BackendPubsub.PubSub}, id: Trading.InternalPubSub),
 
       HealthWebWeb.Endpoint
       # Start a worker by calling: HealthWeb.Worker.start_link(arg)
