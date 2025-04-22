@@ -3,13 +3,14 @@ import Config
 if config_env() == :prod do
 
   host = System.get_env("HOST") || "localhost"
+  host_request = System.get_env("HOST_REQUEST") || "localhost"
   http_port = String.to_integer(System.get_env("PORT") || "80")
   secret_key_base = System.get_env("SECRET_KEY_BASE") || raise ("No SECRET_KEY_BASE config.")
   base_url = System.get_env("BASE_URL")
 
   config :health_web, HealthWebWeb.Endpoint,
     server: true,
-    host: host,
+    host: host_request,
     url: [host: host, port: 443, scheme: "https"],
     http: [
       # Enable IPv6 and bind on all interfaces.
