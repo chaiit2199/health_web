@@ -9,6 +9,7 @@ if config_env() == :prod do
 
   config :health_web, HealthWebWeb.Endpoint,
     server: true,
+    host: host,
     url: [host: host, port: 443, scheme: "https"],
     http: [
       # Enable IPv6 and bind on all interfaces.

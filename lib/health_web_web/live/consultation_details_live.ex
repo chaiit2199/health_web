@@ -1,7 +1,7 @@
 defmodule HealthWebWeb.ConsultationDetailsLive do
   use HealthWebWeb, :live_view
   alias HealthWebWeb.CommonComponents
-
+  alias FetchAPI
 
 
   def mount(_params, _session, socket) do
@@ -11,6 +11,7 @@ defmodule HealthWebWeb.ConsultationDetailsLive do
 
   def handle_params(params, _uri, socket) do
     response = fetch_diseases_details(params["params_id"])
+
     case get_in(response, ["response", "data"]) do
       nil ->
         {:noreply, socket}
@@ -80,32 +81,12 @@ defmodule HealthWebWeb.ConsultationDetailsLive do
   end
 
   defp fetch_diseases_details(params) do
-    base_api = Application.get_env(:health_web, :base_url, [])
-    case HTTPoison.get("#{base_api}/ai/?params=#{URI.encode(params)}") do
-      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-        Jason.decode!(body)
-
-      {:ok, %HTTPoison.Response{status_code: status_code}} ->
-        %{"response" => %{"params_id" => nil, "data" => nil}}
-
-      {:error, %HTTPoison.Error{reason: reason}} ->
-        %{"response" => %{"params_id" => nil, "data" => nil}}
-    end
+    FetchAPI.get("/ai/?params=#{URI.encode(params)}")
   end
 
   defp fetch_recent_post() do
-    base_api = Application.get_env(:health_web, :base_url, [])
-    case HTTPoison.get("#{base_api}/recent_diseases") do
-      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-        Jason.decode!(body)
-      {:ok, %HTTPoison.Response{status_code: status_code}} ->
-        IO.puts(status_code)
-
-      {:error, %HTTPoison.Error{reason: reason}} ->
-        IO.puts(reason)
-    end
+    FetchAPI.get("/recent_diseases")
   end
-
 
   def format_date(string) do
     {:ok, datetime} = NaiveDateTime.from_iso8601(string)

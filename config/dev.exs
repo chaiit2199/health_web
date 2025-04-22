@@ -20,7 +20,8 @@ config :health_web, HealthWebWeb.Endpoint,
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]},
     sass: {DartSass, :install_and_run, [:default, ~w(--watch)]}
-  ]
+  ],
+  host: "http://localhost:4000"
 
 # ## SSL Support
 #
@@ -57,7 +58,7 @@ config :health_web, HealthWebWeb.Endpoint,
 
 config :health_web,
   env: config_env(),
-  base_url: "http://54.169.29.250:8088/api"
+  base_url: "http://localhost:4000/api"
 
 
 # Enable dev routes for dashboard and mailbox

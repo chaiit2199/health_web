@@ -1,5 +1,6 @@
 defmodule HealthWebWeb.AssignStaticData do
   use HealthWebWeb, :live_view
+  alias FetchAPI
 
 
   def on_mount(:fetch_static_data, _params, _session, socket) do
@@ -8,13 +9,6 @@ defmodule HealthWebWeb.AssignStaticData do
 
   defp fetch_diseases() do
     base_api = Application.get_env(:health_web, :base_url, [])
-
-    case HTTPoison.get("#{base_api}/diseases") do
-      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-        diseases = Jason.decode!(body)
-
-      {:error, reason} ->
-        IO.puts(reason)
-    end
+    FetchAPI.get("/diseases")
   end
 end
