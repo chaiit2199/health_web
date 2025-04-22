@@ -15,4 +15,11 @@ defmodule HealthWebWeb.HomeLive do
      socket
      |> assign(modal: modal)}
   end
+
+
+  def handle_event("close_modal", _, socket) do
+    {:noreply,
+     socket
+     |> assign(modal: nil)}
+  end
 end

@@ -1,9 +1,15 @@
 <div class="home-page">
   <div class="min-h-screen">
-    <section class="page_title">
+    <section class="page_title" id="search_section">
       <div class="container-fluid max-w-normal">
-        <div class="text-center mb-8">
-          <h1 class="title">Tư Vấn Sức Khỏe Chuyên Nghiệp</h1>
+        <div class="text-center mb-8"> 
+          <h1 class="title typing-text">
+            <span>T</span><span>ư</span><span> </span>
+            <span>V</span><span>ấ</span><span>n</span><span> </span>
+            <span>S</span><span>ứ</span><span>c</span><span> </span>
+            <span>K</span><span>h</span><span>ỏ</span><span>e</span><span> </span>
+            <span>A</span><span>I</span>
+          </h1>
           <p class="desc">
             Chúng tôi cung cấp thông tin và tư vấn sức khỏe đáng tin cậy từ các chuyên gia y tế hàng đầu.
           </p>
@@ -43,97 +49,18 @@
         </div>
       </div>
     </section>
-    {/* Health Categories */}
-    <section class="py-16 px-4 bg-gray-50">
+    <section class="py-20 px-4 bg-gray-50" id="category_section">
       <div class="container-fluid max-w-xl">
         <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Danh Mục Sức Khỏe</h2>
-        <%!-- <HealthCategories /> --%>
+        <.live_component module={HealthWebWeb.CategoryComponent} id="HealthWebWebCategoryComponent" />
       </div>
     </section>
-    {/* Featured Articles */}
-    <section class="py-16 px-4">
+    <section class="py-20 px-4" id="post_section">
       <div class="container-fluid max-w-xl">
         <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Bài Viết Nổi Bật</h2>
-        <%!-- <FeaturedArticles /> --%>
+        <.live_component module={HealthWebWeb.PostComponent} id="HealthWebWebPostComponent" />
       </div>
-    </section>
-    {/* Consultation Form */}
-    <section class="py-16 px-4 bg-gray-50">
-      <div class="container-fluid max-w-xl">
-        <div class="grid grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">Đặt Lịch Tư Vấn</h2>
-            <p class="text-gray-600 mb-6">
-              Bạn cần tư vấn trực tiếp từ các chuyên gia y tế của chúng tôi? Hãy điền vào mẫu bên cạnh và chúng tôi sẽ
-              liên hệ lại với bạn trong thời gian sớm nhất.
-            </p>
-            <div class="space-y-4">
-              <div class="flex items-center">
-                <div class="bg-teal-100 p-3 rounded-full mr-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 text-teal-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <span class="text-gray-700">Đội ngũ bác sĩ chuyên nghiệp</span>
-              </div>
-              <div class="flex items-center">
-                <div class="bg-teal-100 p-3 rounded-full mr-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 text-teal-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <span class="text-gray-700">Tư vấn nhanh chóng, chính xác</span>
-              </div>
-              <div class="flex items-center">
-                <div class="bg-teal-100 p-3 rounded-full mr-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 text-teal-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <span class="text-gray-700">Bảo mật thông tin cá nhân</span>
-              </div>
-            </div>
-          </div>
-          <div>
-            <%!-- <ConsultationForm /> --%>
-          </div>
-        </div>
-      </div>
-    </section>
-    {/* Footer */}
+    </section> 
     
   </div>
 

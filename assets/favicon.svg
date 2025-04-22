@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Nền -->
+  <rect width="64" height="64" rx="12" fill="#f5faff"/>
+  
+  <!-- Hình trái tim -->
+  <path d="M32 52s-16-10.4-16-22c0-5.5 4.5-10 10-10 3.1 0 5.8 1.4 7.5 3.6C35.2 21.4 37.9 20 41 20c5.5 0 10 4.5 10 10 0 11.6-16 22-16 22z" fill="#e63946"/>
+  
+  <!-- Ô vuông như chip AI -->
+  <rect x="25" y="25" width="14" height="14" rx="2" fill="#1d3557"/>
+  
+  <!-- Chữ AI bên trong chip -->
+  <text x="32" y="36" text-anchor="middle" fill="white" font-size="8" font-family="Arial, sans-serif">AI</text>
+</svg>

@@ -1,0 +1,23 @@
+.header {
+  @apply flex h-[60px] relative z-20;
+
+  &__inner {
+    @apply fixed w-full top-0 flex items-center justify-between;
+    -webkit-backdrop-filter: saturate(180%) blur(8px);
+    backdrop-filter: saturate(180%) blur(8px);
+    background: #ffffffd9;
+    box-shadow: 0 0 8px 4px #00000008;
+  }
+
+  &__nav {
+    @apply flex items-center ml-auto;
+    > li {
+      @apply ml-6;
+    }
+  }
+
+  &__search {
+    @apply text-white;
+    @apply w-8 h-8 rounded bg-emerald-600 flex items-center justify-center ml-6;
+  }
+}
