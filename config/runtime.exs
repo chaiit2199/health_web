@@ -4,7 +4,8 @@ if config_env() == :prod do
 
   host = System.get_env("HOST") || "localhost"
   host_request = System.get_env("HOST_REQUEST") || "localhost"
-  http_port = String.to_integer(System.get_env("PORT") || "80")
+  http_port = String.to_integer(System.get_env("HTTP_PORT") || "81")
+  https_port = String.to_integer(System.get_env("HTTPS_PORT") || "80")
   secret_key_base = System.get_env("SECRET_KEY_BASE") || raise ("No SECRET_KEY_BASE config.")
   base_url = System.get_env("BASE_URL")
 
@@ -33,7 +34,7 @@ if config_env() == :prod do
     ],
     https: [
       protocol_options: protocol_options,
-      port: http_port,
+      port: https_port,
       cipher_suite: :strong,
       keyfile: host_key_file,
       certfile: host_cert_file
