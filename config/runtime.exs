@@ -8,6 +8,17 @@ if config_env() == :prod do
   secret_key_base = System.get_env("SECRET_KEY_BASE") || raise ("No SECRET_KEY_BASE config.")
   base_url = System.get_env("BASE_URL")
 
+  protocol_options = [
+    secure_renegotiations: true,
+    ciphers:
+      :"ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305",
+    versions: [:"tlsv1.2", :"tlsv1.3"],
+    options: [:secure_renegotiations, :no_sslv2, :no_sslv3, :no_tlsv1, :no_tlsv1_1]
+  ]
+
+  host_cert_file = System.get_env("HOST_CERT_FILE") || raise "No host cert file config."
+  host_key_file = System.get_env("HOST_KEY_FILE") || raise "No host key file config."
+
   config :health_web, HealthWebWeb.Endpoint,
     server: true,
     host: host_request,
@@ -19,6 +30,13 @@ if config_env() == :prod do
       # for details about using IPv6 vs IPv4 and loopback vs public addresses.
       ip: {0, 0, 0, 0, 0, 0, 0, 0},
       port: http_port
+    ],
+    https: [
+      protocol_options: protocol_options,
+      port: http_port,
+      cipher_suite: :strong,
+      keyfile: host_key_file,
+      certfile: host_cert_file
     ],
     secret_key_base: secret_key_base
 
