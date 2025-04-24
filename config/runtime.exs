@@ -24,14 +24,6 @@ if config_env() == :prod do
     server: true,
     host: host_request,
     url: [host: host, port: 443, scheme: "https"],
-    http: [
-      # Enable IPv6 and bind on all interfaces.
-      # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
-      # See the documentation on https://hexdocs.pm/plug_cowboy/Plug.Cowboy.html
-      # for details about using IPv6 vs IPv4 and loopback vs public addresses.
-      ip: {0, 0, 0, 0, 0, 0, 0, 0},
-      port: http_port
-    ],
     https: [
       protocol_options: protocol_options,
       port: https_port,
@@ -39,6 +31,16 @@ if config_env() == :prod do
       keyfile: host_key_file,
       certfile: host_cert_file
     ],
+    http: [
+      # Enable IPv6 and bind on all interfaces.
+      # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
+      # See the documentation on https://hexdocs.pm/plug_cowboy/Plug.Cowboy.html
+      # for details about using IPv6 vs IPv4 and loopback vs public addresses.
+      ip: {0, 0, 0, 0, 0, 0, 0, 0},
+      port: http_port,
+      protocol_options: protocol_options
+    ],
+
     secret_key_base: secret_key_base
 
   config :health_web,
