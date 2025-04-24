@@ -1,0 +1,11 @@
+.breadcrumb {
+  @apply flex items-center -ml-1 md:ml-0;
+
+  >li {
+    @apply text-base mr-4 text-G-900 font-smb;
+
+    a {
+      @apply flex items-center;
+    }
+  }
+}

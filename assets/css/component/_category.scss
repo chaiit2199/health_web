@@ -1,0 +1,18 @@
+.category {
+  @apply block;
+  &__inner {
+    @apply bg-white rounded-lg shadow-md p-6 transition-all hover:shadow-lg
+  }
+
+  &__icon {
+    @apply p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4;
+  }
+
+  &__title {
+    @apply font-bold text-lg mb-2 text-gray-800;
+  }
+
+  &__desc {
+    @apply text-gray-600 text-sm;
+  }
+} 

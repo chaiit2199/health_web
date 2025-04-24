@@ -1,0 +1,10 @@
+.panigation {
+  @apply flex justify-center mt-8 space-x-2 mb-10;
+  .panigation_item {
+    @apply shadow;
+    @apply px-4 py-2 bg-gray-200 rounded hover:bg-emerald-600 hover:text-white;
+    &.active {
+      @apply bg-emerald-600 text-white;
+    }
+  }
+}

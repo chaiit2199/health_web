@@ -25,7 +25,6 @@ defmodule HealthWebWeb.ConsultationDetailsLive do
 
       parsed_data =
         json_response["data"]
-        |> IO.inspect(label: "123671826387123")
         |> Jason.decode!()
         |> Enum.map(fn map ->
           [{key, value}] = Map.to_list(map)
@@ -86,7 +85,7 @@ defmodule HealthWebWeb.ConsultationDetailsLive do
   end
 
   defp fetch_recent_post() do
-    FetchAPI.get("/recent_diseases") |> IO.inspect(label: "12312312312312")
+    FetchAPI.get("/recent_diseases")
   end
 
   def format_date(string) do

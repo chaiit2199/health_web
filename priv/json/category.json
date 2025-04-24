@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Sức Khỏe Tim Mạch",
+    "desc": "Thông tin về bệnh tim, phòng ngừa và điều trị",
+    "style": "bg-red-100 text-red-500"
+  },
+  {
+    "title": "Sức Khỏe Tinh Thần",
+    "desc": "Stress, lo âu, trầm cảm và cách chăm sóc sức khỏe tinh thần",
+    "style": "bg-purple-100 text-purple-500"
+  },
+  {
+    "title": "Dinh Dưỡng",
+    "desc": "Chế độ ăn uống lành mạnh, thực phẩm bổ dưỡng",
+    "style": "bg-green-100 text-green-500"
+  },
+  {
+    "title": "Thể Dục & Thể Thao",
+    "desc": "Bài tập, luyện tập và duy trì sức khỏe thể chất",
+    "style": "bg-blue-100 text-blue-500"
+  },
+  {
+    "title": "Sức Khỏe Trẻ Em",
+    "desc": "Chăm sóc và phát triển sức khỏe cho trẻ em",
+    "style": "bg-yellow-100 text-yellow-500"
+  },
+  {
+    "title": "Thuốc & Điều Trị",
+    "desc": "Thông tin về thuốc, tác dụng phụ và điều trị",
+    "style": "bg-indigo-100 text-indigo-500"
+  },
+  {
+    "title": "Bệnh Lý",
+    "desc": "Thông tin về các bệnh phổ biến, triệu chứng và điều trị",
+    "style": "bg-teal-100 text-teal-500"
+  },
+  {
+    "title": "Sơ Cứu & Cấp Cứu",
+    "desc": "Hướng dẫn sơ cứu và xử lý tình huống khẩn cấp",
+    "style": "bg-orange-100 text-orange-500"
+  }
+]

@@ -362,7 +362,7 @@ defmodule HealthWebWeb.CoreComponents do
         %{label: "Inner page"}
       ]}
   """
-  attr(:items, :list, default: [])
+   attr(:items, :list, default: [])
   # attr(:icon, :string, default: "true")
   slot(:inner_block)
 
@@ -395,6 +395,45 @@ defmodule HealthWebWeb.CoreComponents do
       </li>
     </ul>
     """
+  end
+
+
+  attr :page, :integer, default: 1
+  attr(:class, :string, default: nil)
+  attr(:page_end, :boolean, default: false)
+
+
+  def panigation(assigns) do
+    assigns =
+      assign(assigns,
+        next: assigns.page + 1,
+        end_page: assigns.page - 1
+      )
+    ~H"""
+      <ul class={["panigation", @class]}>
+        <li :if={@page != 1} class="panigation_item" phx-click={JS.push("change_page", value: %{page: @page - 1})}>
+         &lt;
+        </li>
+        <li :if={@page == 1} class="panigation_item active">
+          <%= @page %>
+        </li>
+        <li :if={@page != 1  && !@page_end} class={["panigation_item active"]} phx-click={JS.push("change_page", value: %{page: @page - 1})}>
+          <%= @page %>
+        </li>
+        <li :if={@page != 1 && @page_end} class={["panigation_item"]} phx-click={JS.push("change_page", value: %{page: @page - 1})}>
+          <%= @end_page %>
+        </li>
+        <li :if={!@page_end} class="panigation_item 22" phx-click={JS.push("change_page", value: %{page: @page + 1})}>
+          <%= @next %>
+        </li>
+        <li :if={@page_end} class="panigation_item active">
+          <%= @page %>
+        </li>
+        <li :if={!@page_end} class="panigation_item" phx-click={JS.push("change_page", value: %{page: @page + 1})}>
+          &gt;
+        </li>
+      </ul>
+      """
   end
 
   @doc """

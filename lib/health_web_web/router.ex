@@ -19,6 +19,7 @@ defmodule HealthWebWeb.Router do
 
     live_session :default, on_mount: [{HealthWebWeb.AssignStaticData, :fetch_static_data}] do
       live("/", HomeLive, :index)
+      live("/category/:params", CategoryLive, :index)
       live("/health-consultation/:params_id", ConsultationDetailsLive, :index)
     end
   end

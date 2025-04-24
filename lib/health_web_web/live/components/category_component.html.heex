@@ -1,22 +1,22 @@
 <div class="grid grid-cols-4 md:grid-cols-1 gap-6">
-  <a href="/category/heart-health" class="block group">
-    <div class="bg-white rounded-lg shadow-md p-6 transition-all hover:shadow-lg">
-      <div class="bg-red-100 text-red-500 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
+  <div class="category" phx-click={JS.navigate("/category/suc-khoe-tim-mach")}>
+    <div class="category__inner">
+      <div class="bg-red-100 text-red-500 category__icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart h-7 w-7">
         <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
         </path>
         </svg>
       </div>
-      <h3 class="font-bold text-lg mb-2 text-gray-800">Sức Khỏe Tim Mạch
+      <h3 class="category__title">Sức Khỏe Tim Mạch
       </h3>
-      <p class="text-gray-600 text-sm">Thông tin về bệnh tim, phòng ngừa và điều trị
+      <p class="category__desc">Thông tin về bệnh tim, phòng ngừa và điều trị
       </p>
     </div>
-  </a>
+  </div>
 
-  <a href="/category/mental-health" class="block group">
-    <div class="bg-white rounded-lg shadow-md p-6 transition-all hover:shadow-lg">
-      <div class="bg-purple-100 text-purple-500 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
+  <div class="category" phx-click={JS.navigate("/category/suc-khoe-tinh-than")}> 
+    <div class="category__inner">
+      <div class="bg-purple-100 text-purple-500 category__icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-brain h-7 w-7">
         <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z">
         </path>
@@ -38,16 +38,16 @@
         </path>
       </svg>
       </div>
-      <h3 class="font-bold text-lg mb-2 text-gray-800">Sức Khỏe Tinh Thần
+      <h3 class="category__title">Sức Khỏe Tinh Thần
       </h3>
-      <p class="text-gray-600 text-sm">Stress, lo âu, trầm cảm và cách chăm sóc sức khỏe tinh thần
+      <p class="category__desc">Stress, lo âu, trầm cảm và cách chăm sóc sức khỏe tinh thần
       </p>
     </div>
-  </a>
+  </div>
     
-  <a href="/category/nutrition" class="block group">
-    <div class="bg-white rounded-lg shadow-md p-6 transition-all hover:shadow-lg">
-      <div class="bg-green-100 text-green-500 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
+  <div class="category" phx-click={JS.navigate("/category/dinh-duong")}>
+    <div class="category__inner">
+      <div class="bg-green-100 text-green-500 category__icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-apple h-7 w-7">
           <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z">
           </path>
@@ -55,16 +55,16 @@
           </path>
         </svg>
       </div>
-    <h3 class="font-bold text-lg mb-2 text-gray-800">Dinh Dưỡng
+    <h3 class="category__title">Dinh Dưỡng
     </h3>
-    <p class="text-gray-600 text-sm">Chế độ ăn uống lành mạnh, thực phẩm bổ dưỡng
+    <p class="category__desc">Chế độ ăn uống lành mạnh, thực phẩm bổ dưỡng
     </p>
     </div>
-  </a>
+  </div>
     
-  <a href="/category/fitness" class="block group">
-    <div class="bg-white rounded-lg shadow-md p-6 transition-all hover:shadow-lg">
-      <div class="bg-blue-100 text-blue-500 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
+  <div class="category" phx-click={JS.navigate("/category/the-duc-the-thao")}>
+    <div class="category__inner">
+      <div class="bg-blue-100 text-blue-500 category__icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dumbbell h-7 w-7">
           <path d="M14.4 14.4 9.6 9.6">
           </path>
@@ -78,16 +78,16 @@
           </path>
         </svg>
       </div>
-      <h3 class="font-bold text-lg mb-2 text-gray-800">Thể Dục &amp; Thể Thao
+      <h3 class="category__title">Thể Dục &amp; Thể Thao
       </h3>
-      <p class="text-gray-600 text-sm">Bài tập, luyện tập và duy trì sức khỏe thể chất
+      <p class="category__desc">Bài tập, luyện tập và duy trì sức khỏe thể chất
       </p>
     </div>
-  </a>
+  </div>
     
-  <a href="/category/pediatrics" class="block group">
-    <div class="bg-white rounded-lg shadow-md p-6 transition-all hover:shadow-lg">
-      <div class="bg-yellow-100 text-yellow-500 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
+  <div class="category" phx-click={JS.navigate("/category/suc-khoe-tre-em")}>
+    <div class="category__inner">
+      <div class="bg-yellow-100 text-yellow-500 category__icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-baby h-7 w-7">
           <path d="M9 12h.01">
           </path>
@@ -99,16 +99,16 @@
           </path>
         </svg>
       </div>
-      <h3 class="font-bold text-lg mb-2 text-gray-800">Sức Khỏe Trẻ Em
+      <h3 class="category__title">Sức Khỏe Trẻ Em
       </h3>
-      <p class="text-gray-600 text-sm">Chăm sóc và phát triển sức khỏe cho trẻ em
+      <p class="category__desc">Chăm sóc và phát triển sức khỏe cho trẻ em
       </p>
     </div>
-  </a>
+  </div>
     
-  <a href="/category/medications" class="block group">
-    <div class="bg-white rounded-lg shadow-md p-6 transition-all hover:shadow-lg">
-      <div class="bg-indigo-100 text-indigo-500 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
+  <div class="category" phx-click={JS.navigate("/category/thuoc-dieu-tri")}>
+    <div class="category__inner">
+      <div class="bg-indigo-100 text-indigo-500 category__icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pill h-7 w-7">
         <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z">
         </path>
@@ -116,16 +116,16 @@
         </path>
       </svg>
       </div>
-      <h3 class="font-bold text-lg mb-2 text-gray-800">Thuốc &amp; Điều Trị
+      <h3 class="category__title">Thuốc &amp; Điều Trị
       </h3>
-      <p class="text-gray-600 text-sm">Thông tin về thuốc, tác dụng phụ và điều trị
+      <p class="category__desc">Thông tin về thuốc, tác dụng phụ và điều trị
       </p>
     </div>
-  </a>
+  </div>
     
-  <a href="/category/diseases" class="block group">
-    <div class="bg-white rounded-lg shadow-md p-6 transition-all hover:shadow-lg">
-      <div class="bg-teal-100 text-teal-500 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
+  <div class="category" phx-click={JS.navigate("/category/benh-ly")}>
+    <div class="category__inner">
+      <div class="bg-teal-100 text-teal-500 category__icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-stethoscope h-7 w-7">
           <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3">
           </path>
@@ -135,26 +135,26 @@
           </circle>
         </svg>
       </div>
-      <h3 class="font-bold text-lg mb-2 text-gray-800">Bệnh Lý
+      <h3 class="category__title">Bệnh Lý
       </h3>
-      <p class="text-gray-600 text-sm">Thông tin về các bệnh phổ biến, triệu chứng và điều trị
+      <p class="category__desc">Thông tin về các bệnh phổ biến, triệu chứng và điều trị
       </p>
     </div>
-  </a>
+  </div>
 
 
-  <a href="/category/first-aid" class="block group">
-    <div class="bg-white rounded-lg shadow-md p-6 transition-all hover:shadow-lg">
-      <div class="bg-orange-100 text-orange-500 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
+  <div class="category" phx-click={JS.navigate("/category/so-cuu-cap-cuu")}>
+    <div class="category__inner">
+      <div class="bg-orange-100 text-orange-500 category__icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-thermometer h-7 w-7">
           <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z">
           </path>
         </svg>
       </div>
-      <h3 class="font-bold text-lg mb-2 text-gray-800">Sơ Cứu &amp; Cấp Cứu
+      <h3 class="category__title">Sơ Cứu &amp; Cấp Cứu
       </h3>
-      <p class="text-gray-600 text-sm">Hướng dẫn sơ cứu và xử lý tình huống khẩn cấp
+      <p class="category__desc">Hướng dẫn sơ cứu và xử lý tình huống khẩn cấp
       </p>
     </div>
-  </a>
+  </div>
 </div>
