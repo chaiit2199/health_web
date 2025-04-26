@@ -1,33 +1,65 @@
+<div>
+  <header class="header">
+    <div class="header__inner">
+      <div class="container-fluid max-w-xl flex items-center">
+        <div class="flex">
+          <a href="/" class="text-emerald-600 font-bold text-xl flex items-center">
+            <img src="/assets/icons/logo.svg" alt=""> 
+          </a>
+        </div>
 
-<header class="header">
-  <div class="header__inner">
-    <div class="container-fluid max-w-xl flex items-center">
-      <div class="flex py-4">
-        <a href="/" class="text-emerald-600 font-bold text-xl flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>Tư Vấn Sức Khỏe AI</a>
-      </div>
+        <div class="header__nav__mb" phx-click={JS.push("open_modal", target: @myself, value: %{modal: "show_menu"})}>
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M128 102.4c0-14.138 11.462-25.6 25.6-25.6h332.8c14.138 0 25.6 11.462 25.6 25.6S500.538 128 486.4 128H153.6c-14.138 0-25.6-11.463-25.6-25.6zm358.4 128H25.6C11.462 230.4 0 241.863 0 256c0 14.138 11.462 25.6 25.6 25.6h460.8c14.138 0 25.6-11.462 25.6-25.6 0-14.137-11.462-25.6-25.6-25.6zm0 153.6H256c-14.137 0-25.6 11.462-25.6 25.6 0 14.137 11.463 25.6 25.6 25.6h230.4c14.138 0 25.6-11.463 25.6-25.6 0-14.138-11.462-25.6-25.6-25.6z" fill="#059669" opacity="1" data-original="#000000" class=""></path></g></svg>
+        </div>
 
-      <ul class="header__nav">
-        <li class="link"><a href="#category_section">Danh mục</a></li>
-        <li class="link"><a href="#post_section">Bài viết</a></li>
-      </ul>
+        <ul class="header__nav">
+          <li class="link"><a href="/">Trang chủ</a></li>
+          <li class="link"><a href="/#category_section">Danh mục</a></li>
+          <li class="link"><a href="/#post_section">Bài viết</a></li>
+        </ul>
 
-      <div class="header__search zoom-in" phx-click={JS.push("show_modal", value: %{modal: "search_ai"})}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="lucide lucide-search h-4 w-4 zoom-loop"
-        >
-          <circle cx="11" cy="11" r="8"></circle>
-          <path d="m21 21-4.3-4.3"></path>
-        </svg>
+        <div class="header__search zoom-in" phx-click={JS.push("show_modal", value: %{modal: "search_ai"})}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-search h-4 w-4 zoom-loop"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+        </div>
       </div>
     </div>
-  </div>
-</header>
+
+  </header>
+
+  <%= cond do %>
+    <% @modal == "show_menu" -> %>
+      <.modal
+        id="show_menu_modal"
+        width="md"
+        show={true}
+        closeable={true}
+        on_close={JS.push("close_modal", target: @myself)}
+      >
+        <div class="-ml-3">
+          <a href="/" class="text-emerald-600 font-bold text-xl flex items-center">
+            <img src="/assets/icons/logo.svg" alt=""> 
+          </a>
+        </div>
+        <ul class="text-xl uppercase font-smb">
+          <li class="link mt-6"><a href="/">Trang chủ</a></li>
+          <li class="link mt-6" phx-click={JS.push("close_modal", target: @myself)}><a href="/#category_section">Danh mục</a></li>
+          <li class="link mt-6" phx-click={JS.push("close_modal", target: @myself)}><a href="/#post_section">Bài viết</a></li>
+        </ul>
+      </.modal>
+    <% true -> %>
+  <% end %>
+</div>

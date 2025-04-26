@@ -1,4 +1,4 @@
-<div class="p-8">
+<div class="p-8 md:px-4">
   <div class="container-fluid max-w-xl">
     <div class="details_post">
       <div class="content_post">
@@ -8,10 +8,17 @@
           <div class="flex items-center text-white">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar h-4 w-4 mr-1"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
             <span>Cập nhật: <%= format_date(@updated_at) %></span>
+
+            <div class="ml-auto flex items-center">
+              <img phx-hook="SharePost" data-flatform="facebook" id="SharePostfacebook" class="w-6 h-6 mr-4 p-1 cursor-pointer" src="/assets/icons/fb.svg" alt="">
+              <img phx-hook="SharePost" data-flatform="linkedin" id="SharePostlinkedIn" class="w-6 h-6 mr-4 p-1 cursor-pointer" src="/assets/icons/linkedin.svg" alt="">
+              <img phx-hook="ShareLink" id="ShareLink" target="_blank" data-href="https://www.instagram.com/kafi_securities_corporation" class="w-6 h-6 mr-4 p-1 cursor-pointer md:mr-0" src="/assets/icons/link.svg" alt="">
             </div>
+          </div>
         </div>
 
         <div class="content_post_inner">
+          <img class="w-full rounded" src={@banner} alt="">
           <%= for item <- @parsed_data do %>
             <div class="mt-8">
               <h2 class="text-2xl font-smb mb-2 flex items-start">
@@ -45,4 +52,38 @@
       </div>
     </div> 
   </div> 
+
+  <section class="py-20 px-4 md:py-10" id="disclaim">
+    <div class="container-fluid max-w-xl">
+        <p class="italic text-gray-400">
+        <strong>Lưu ý:</strong> Nội dung trên trang web không thay thế cho tư vấn, chẩn đoán hoặc điều trị y tế chuyên nghiệp. <br>
+        Vui lòng tham khảo ý kiến bác sĩ hoặc chuyên gia y tế đối với các vấn đề sức khỏe cụ thể.
+      </p>
+    </div>
+  </section> 
+</div>
+
+<%= cond do %>
+  <% @modal == "search_ai" -> %>
+    <.modal
+      id="search_ai_modal"
+      width="md"
+      show={true}
+      closeable={true}
+      on_close={JS.push("close_modal")}
+    >
+      <.live_component
+        diseases={@diseases}
+        modal={@modal}
+        module={HealthWebWeb.SearchComponent}
+        id="HealthWebWebSearchComponent"
+      />
+    </.modal>
+  <% true -> %>
+<% end %>
+<.live_component recents={@recents} module={HealthWebWeb.FooterComponent} id="HealthWebWebFooterComponent" />
+
+
+<div class="notification_success">
+  <div class="inner"><img src="/assets/icons/success.svg" class="mr-1 w-6 h-6" alt=""> Đã sao chép liên kết thành công!</div>
 </div>

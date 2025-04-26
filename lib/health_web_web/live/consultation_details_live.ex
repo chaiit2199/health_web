@@ -6,10 +6,18 @@ defmodule HealthWebWeb.ConsultationDetailsLive do
 
   def mount(_params, _session, socket) do
     Task.start(__MODULE__, :task_get_recent_post, [self()])
-    {:ok, socket |> assign(recent_post: [])}
+    recents = socket.assigns.recents_post
+    diseases = socket.assigns.static_data
+
+    {:ok, socket
+      |> assign(diseases: diseases)
+      |> assign(recent_post: [])
+      |> assign(modal: nil)
+      |> assign(recents: recents)
+    }
   end
 
-  def handle_params(params, _uri, socket) do
+  def handle_params(params, uri, socket) do
     response = fetch_diseases_details(params["params_id"])
 
     case get_in(response, ["response", "data"]) do
@@ -19,6 +27,7 @@ defmodule HealthWebWeb.ConsultationDetailsLive do
       data when is_binary(data) ->
         json_response = %{
           "data" => data,
+          "category" => get_in(response, ["response", "category"]),
           "name" => get_in(response, ["response", "name"]),
           "updated_at" => get_in(response, ["response", "updated_at"])
         }
@@ -30,6 +39,7 @@ defmodule HealthWebWeb.ConsultationDetailsLive do
           [{key, value}] = Map.to_list(map)
           %{title: key, content: value}
         end)
+
         |> Enum.map(fn %{title: title, content: content} ->
           updated =
             content
@@ -66,8 +76,12 @@ defmodule HealthWebWeb.ConsultationDetailsLive do
           |> assign(modal: nil)
           |> assign(show: false)
           |> assign(title: json_response["name"])
+          |> assign(banner: "/assets/images/posts/#{json_response["category"]}.jpg")
           |> assign(updated_at: json_response["updated_at"])
-          |> assign(parsed_data: parsed_data)}
+          |> assign(parsed_data: parsed_data)
+          |> assign(desc_post: List.first(parsed_data)[:content] |> List.first())
+          |> assign(post_url: uri)
+        }
 
       _ ->
         {:noreply, socket}
@@ -78,6 +92,19 @@ defmodule HealthWebWeb.ConsultationDetailsLive do
     {:noreply,
      socket
      |> assign(recent_post: data || %{})}
+  end
+
+  def handle_event("show_modal", %{"modal" => modal}, socket) do
+    {:noreply,
+     socket
+     |> assign(modal: modal)}
+  end
+
+
+  def handle_event("close_modal", _, socket) do
+    {:noreply,
+     socket
+     |> assign(modal: nil)}
   end
 
   defp fetch_diseases_details(params) do

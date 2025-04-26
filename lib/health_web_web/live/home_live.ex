@@ -3,10 +3,12 @@ defmodule HealthWebWeb.HomeLive do
 
   def mount(_params, _session, socket) do
     diseases = socket.assigns.static_data
+    recents = socket.assigns.recents_post
 
     {:ok,
      socket
      |> assign(diseases: diseases)
+     |> assign(recents: recents)
      |> assign(modal: nil)}
   end
 

@@ -5,6 +5,9 @@ defmodule HealthWebWeb.CategoryLive do
 
 
   def mount(_params, _session, socket) do
+    recents = socket.assigns.recents_post
+    diseases = socket.assigns.static_data
+
     category =
       FetchDataSource.fetch_json("/category.json")
       |> Enum.map(fn item ->
@@ -13,7 +16,10 @@ defmodule HealthWebWeb.CategoryLive do
       end)
       {:ok, socket
       |> assign(page_end: false)
+      |> assign(diseases: diseases)
+      |> assign(recents: recents)
       |> assign(category_post: [])
+      |> assign(modal: nil)
       |> assign(category: category)}
   end
 
@@ -24,11 +30,15 @@ defmodule HealthWebWeb.CategoryLive do
     category_details =
       socket.assigns.category
       |> Enum.find(&(&1["id"] == current_category))
-      {:noreply, socket
 
-      |> assign(current_category: current_category)
-      |> assign(current_page: String.to_integer(current_page))
-      |> assign(category_details: category_details)}
+    active_category = get_category(current_category, socket.assigns.category)
+
+
+    {:noreply, socket
+    |> assign(active_category: active_category)
+    |> assign(current_category: current_category)
+    |> assign(current_page: String.to_integer(current_page))
+    |> assign(category_details: category_details)}
   end
 
   def handle_info({:result_get_category_post, data}, socket) do
@@ -36,6 +46,19 @@ defmodule HealthWebWeb.CategoryLive do
      socket
      |> assign(page_end: length(data) < 10)
      |> assign(category_post: data || %{})}
+  end
+
+  def handle_event("show_modal", %{"modal" => modal}, socket) do
+    {:noreply,
+     socket
+     |> assign(modal: modal)}
+  end
+
+
+  def handle_event("close_modal", _, socket) do
+    {:noreply,
+     socket
+     |> assign(modal: nil)}
   end
 
   def task_get_category_post(pid \\ [], params) do
@@ -46,12 +69,14 @@ defmodule HealthWebWeb.CategoryLive do
     )
   end
 
-  def handle_event("change_page", %{"page" => page}, socket) do
-    IO.inspect(page, label: "yeiduqwyeqiweuyqw")
-    {:noreply, socket |> push_patch(to: "/category/#{socket.assigns.current_category}?page=#{page}")}
-  end
-
   defp fetch_category_post(params) do
     FetchAPI.get("category?category=#{params["params"]}&page=#{params["page"] || 1}")
+  end
+
+  def get_category(id, category) do
+    case Enum.find(category, fn item -> item["id"] == id end) do
+      %{"title" => title} -> title
+      _ -> nil
+    end
   end
 end

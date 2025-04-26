@@ -11,7 +11,7 @@
             <span>A</span><span>I</span>
           </h1>
           <p class="desc">
-            Chúng tôi cung cấp thông tin và tư vấn sức khỏe đáng tin cậy từ các chuyên gia y tế hàng đầu.
+            Chúng tôi cung cấp thông tin sức khỏe tổng hợp từ nhiều nguồn uy tín, với mục đích tham khảo.
           </p>
         </div>
 
@@ -44,7 +44,7 @@
             </button>
           </div>
           <p class="text-sm text-white/80 mt-2">
-            Ví dụ: "Làm thế nào để giảm đau đầu?", "Chế độ ăn cho người tiểu đường"
+            Ví dụ: Làm thế nào để giảm đau đầu?, Chế độ ăn cho người tiểu đường
           </p>
         </div>
       </div>
@@ -58,10 +58,18 @@
     <section class="py-20 px-4" id="post_section">
       <div class="container-fluid max-w-xl">
         <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Bài Viết Nổi Bật</h2>
-        <.live_component module={HealthWebWeb.PostComponent} id="HealthWebWebPostComponent" />
+        <.live_component module={HealthWebWeb.PostComponent} recents={@recents} id="HealthWebWebPostComponent" />
       </div>
     </section> 
-    
+
+    <section class="pb-20 px-4 md:pb-10" id="disclaim">
+      <div class="container-fluid max-w-xl">
+         <p class="italic text-gray-400">
+          <strong>Lưu ý:</strong> Nội dung trên trang web không thay thế cho tư vấn, chẩn đoán hoặc điều trị y tế chuyên nghiệp. <br>
+          Vui lòng tham khảo ý kiến bác sĩ hoặc chuyên gia y tế đối với các vấn đề sức khỏe cụ thể.
+        </p>
+      </div>
+    </section> 
   </div>
 
   <%= cond do %>
@@ -82,4 +90,6 @@
       </.modal>
     <% true -> %>
   <% end %>
+
+  <.live_component recents={@recents} module={HealthWebWeb.FooterComponent} id="HealthWebWebFooterComponent" />
 </div>

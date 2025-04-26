@@ -10,14 +10,18 @@
   }
 
   &__nav {
-    @apply flex items-center ml-auto;
+    @apply flex items-center ml-auto md:hidden;
     > li {
       @apply ml-6;
+    }
+
+    &__mb {
+      @apply hidden md:block ml-auto mr-1;
     }
   }
 
   &__search {
     @apply text-white;
-    @apply w-8 h-8 rounded bg-emerald-600 flex items-center justify-center ml-6;
+    @apply w-8 h-8 rounded bg-emerald-600 flex items-center justify-center ml-6 md:mr-4;
   }
 }

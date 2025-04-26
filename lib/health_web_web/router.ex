@@ -17,9 +17,24 @@ defmodule HealthWebWeb.Router do
   scope "/", HealthWebWeb do
     pipe_through :browser
 
-    live_session :default, on_mount: [{HealthWebWeb.AssignStaticData, :fetch_static_data}] do
+    live_session :default, on_mount: [{HealthWebWeb.AssignStaticData, :fetch_static_data}, {HealthWebWeb.AssignRecentPost, :fetch_recent_diseases}] do
       live("/", HomeLive, :index)
       live("/category/:params", CategoryLive, :index)
+    end
+  end
+
+  pipeline :detail do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_live_flash
+    plug :put_root_layout, html: {HealthWebWeb.Layouts, :detail}
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+  end
+
+  scope "/", HealthWebWeb do
+    pipe_through :detail
+    live_session :detail, on_mount: [{HealthWebWeb.AssignStaticData, :fetch_static_data}, {HealthWebWeb.AssignRecentPost, :fetch_recent_diseases}] do
       live("/health-consultation/:params_id", ConsultationDetailsLive, :index)
     end
   end

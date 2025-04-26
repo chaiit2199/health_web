@@ -188,3 +188,24 @@ $max-height: calc(100vh - 3rem);
 .pdf-page-canvas {
   @apply w-full;
 }
+
+#show_menu_modal {
+  #show_menu_modal-container {
+      @apply rounded-none;
+  }
+  .modal__body {
+    @apply h-screen w-screen p-0;
+  }
+
+  .modal__content {
+    max-height: 100vh;
+    @apply h-screen;
+  }
+
+  .modal__content__close {
+    @apply top-10;
+    svg {
+      @apply w-8 h-8;
+    }
+  }
+}

@@ -1,62 +1,22 @@
-<div class="grid grid-cols-3 md:grid-cols-1 gap-6">
-  <a href="/article/1" class="group">
-    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-      <div class="relative h-48 w-full"><img alt="10 Cách Tăng Cường Hệ Miễn Dịch Tự Nhiên" loading="lazy" decoding="async" data-nimg="fill" class="object-cover" src="/placeholder.svg?height=200&amp;width=400" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+<div class="post-slide swiper-container -m-4 !md:m-0" phx-hook="slide" id="slideHookPost">
+<div class="swiper-wrapper">
+  <div class="swiper-slide" :for={recents <- @recents}>
+    <div class="post-recent post_img__effect" phx-click={JS.navigate("/health-consultation/#{recents["title"]}")}>
+      <div class="relative h-48 w-full overflow-hidden">
+        <img class="post-recent__img" alt={recents["category"]} loading="lazy" decoding="async" data-nimg="fill" src={"/assets/images/posts/#{recents["category"]}.jpg"}>
       </div>
       <div class="p-5">
         <div class="flex items-center text-sm text-gray-500 mb-2">
-          <span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded text-xs font-medium">Sức Khỏe Tổng Quát</span>
+          <span class="post-recent__name"><%= get_category(recents["category"], @category) %></span>
           <span class="mx-2">•</span>
-          <span>15/04/2023</span>
-          <span class="mx-2">•</span>
-          <span>8 phút đọc</span>
+          <span><%= recents["updated_at"] %></span>
         </div>
-        <h3 class="font-bold text-lg mb-2 text-gray-800 group-hover:text-emerald-600 transition-colors">10 Cách Tăng Cường Hệ Miễn Dịch Tự Nhiên</h3>
-        <p class="text-gray-600 text-sm mb-4">Khám phá các phương pháp tự nhiên giúp tăng cường hệ miễn dịch và bảo vệ sức khỏe của bạn.</p>
-        <div class="text-emerald-600 font-medium text-sm flex items-center">Đọc tiếp
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-        </div>
+        <h3 class="post-recent__title"><%= recents["name"] %></h3>
+        <p class="post-recent__desc"><%= recents["data"] %></p> 
       </div>
     </div>
-  </a>
-  <a href="/article/2" class="group">
-    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-      <div class="relative h-48 w-full"><img alt="Chế Độ Ăn Kiêng Địa Trung Hải: Lợi Ích Và Thực Đơn Mẫu" loading="lazy" decoding="async" data-nimg="fill" class="object-cover" src="/placeholder.svg?height=200&amp;width=400" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
-      </div>
-      <div class="p-5">
-        <div class="flex items-center text-sm text-gray-500 mb-2">
-          <span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded text-xs font-medium">Dinh Dưỡng</span><span clas
-          s="mx-2">•</span>
-          <span>02/05/2023</span><span clas
-          s="mx-2">•</span>
-          <span>10 phút đọc</span>
-        </div>
-        <h3 class="font-bold text-lg mb-2 text-gray-800 group-hover:text-emerald-600 transition-colors">Chế Độ Ăn Kiêng Địa Trung Hải: Lợi Ích Và Thực Đơn Mẫu</h3>
-        <p class="text-gray-600 text-sm mb-4">Tìm hiểu về chế độ ăn kiêng Địa Trung Hải và cách áp dụng vào bữa ăn hàng ngày của bạn.</p>
-        <div class="text-emerald-600 font-medium text-sm flex items-center">Đọc tiếp
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-        </div>
-      </div>
-    </div>
-  </a>
-  <a href="/article/3" class="group">
-    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-      <div class="relative h-48 w-full"><img alt="Dấu Hiệu Cảnh Báo Đột Quỵ Mà Bạn Không Nên Bỏ Qua" loading="lazy" decoding="async" data-nimg="fill" class="object-cover" src="/placeholder.svg?height=200&amp;width=400" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
-      </div>
-      <div class="p-5">
-        <div class="flex items-center text-sm text-gray-500 mb-2">
-          <span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded text-xs font-medium">Sức Khỏe Tim Mạch</span>
-          <span class="mx-2">•</span>
-          <span>20/05/2023</span>
-          <span class="mx-2">•</span>
-          <span>6 phút đọc</span>
-        </div>
-        <h3 class="font-bold text-lg mb-2 text-gray-800 group-hover:text-emerald-600 transition-colors">Dấu Hiệu Cảnh Báo Đột Quỵ Mà Bạn Không Nên Bỏ Qua</h3>
-        <p class="text-gray-600 text-sm mb-4">Nhận biết các dấu hiệu cảnh báo sớm của đột quỵ có thể cứu sống bạn hoặc người thân.</p>
-        <div class="text-emerald-600 font-medium text-sm flex items-center">Đọc tiếp
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-        </div>
-      </div>
-    </div>
-  </a>
+  </div>
+ 
+</div>
+
 </div>

@@ -1,6 +1,8 @@
-import StockUpdate from "./StockUpdate";
+import Slide from "./slide";
+import ShareLink from "./shareLink";
 
 const Component = {
-  ...StockUpdate
+  ...Slide,
+  ...ShareLink,
 };
 export default Component;

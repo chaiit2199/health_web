@@ -1,77 +1,80 @@
-<footer class="bg-gray-800 text-white py-12 px-4">
+<footer class="bg-gray-800 text-white py-8 px-4">
   <div class="container-fluid max-w-xl">
-    <div class="grid grid-cols-4 gap-8">
+    <div class="grid grid-cols-4 gap-8 md:grid-cols-1">
       <div>
+        <a href="/" class="text-emerald-600 font-bold text-xl flex items-center">
+          <img src="/assets/icons/logowhite.svg" alt=""> 
+        </a>
         <h3 class="text-xl font-bold mb-4">Tư Vấn Sức Khỏe</h3>
         <p class="text-gray-400">
-          Cung cấp thông tin sức khỏe đáng tin cậy và dịch vụ tư vấn chuyên nghiệp.
-        </p>
+          Chúng tôi cung cấp thông tin sức khỏe tổng hợp từ nhiều nguồn uy tín, với mục đích tham khảo.
+        </p> 
       </div>
-      <div>
+      <div class="pl-8 md:pl-0">
         <h4 class="text-lg font-semibold mb-4">Liên Kết Nhanh</h4>
         <ul class="space-y-2">
           <li>
-            <a href="/" class="text-gray-400 hover:text-white transition">
+            <a href="/" class="text-gray-400 hover:text-emerald-600 transition">
               Trang chủ
             </a>
           </li>
           <li>
-            <a href="/about" class="text-gray-400 hover:text-white transition">
-              Về chúng tôi
+            <a href="/#category_section" class="text-gray-400 hover:text-emerald-600 transition">
+              Danh mục
             </a>
           </li>
           <li>
-            <a href="/services" class="text-gray-400 hover:text-white transition">
-              Dịch vụ
+            <a href="/#post_section" class="text-gray-400 hover:text-emerald-600 transition">
+              Bài viết
             </a>
-          </li>
-          <li>
-            <a href="/contact" class="text-gray-400 hover:text-white transition">
-              Liên hệ
-            </a>
-          </li>
+          </li> 
         </ul>
       </div>
       <div>
-        <h4 class="text-lg font-semibold mb-4">Danh Mục</h4>
+        <h4 class="text-lg font-semibold mb-4">
+          <a href="/#category_section" class="text-white hover:text-emerald-600 transition">
+            Danh Mục
+          </a>
+        </h4>
         <ul class="space-y-2">
-          <li>
-            <a href="/category/nutrition" class="text-gray-400 hover:text-white transition">
+          <li phx-click={JS.navigate("/category/suc-khoe-tim-mach")}>
+            <span class="text-gray-400 hover:text-emerald-600 transition">
+              Sức Khỏe Tim Mạch
+            </span>
+          </li>
+          <li phx-click={JS.navigate("/category/dinh-duong")}>
+            <span class="text-gray-400 hover:text-emerald-600 transition">
               Dinh dưỡng
-            </a>
+            </span>
           </li>
-          <li>
-            <a
-              href="/category/mental-health"
-              class="text-gray-400 hover:text-white transition"
-            >
+          <li phx-click={JS.navigate("/category/suc-khoe-tinh-than")}>
+            <span class="text-gray-400 hover:text-emerald-600 transition">
               Sức khỏe tinh thần
-            </a>
+            </span>
           </li>
-          <li>
-            <a href="/category/fitness" class="text-gray-400 hover:text-white transition">
+          <li phx-click={JS.navigate("/category/the-duc-the-thao")}>
+            <span class="text-gray-400 hover:text-emerald-600 transition">
               Thể dục thể thao
-            </a>
-          </li>
-          <li>
-            <a href="/category/diseases" class="text-gray-400 hover:text-white transition">
-              Bệnh lý
-            </a>
-          </li>
+            </span>
+          </li> 
         </ul>
       </div>
       <div>
-        <h4 class="text-lg font-semibold mb-4">Liên Hệ</h4>
-        <address class="not-italic text-gray-400">
-          <p>123 Đường Sức Khỏe</p>
-          <p>Quận Hà Đông, Hà Nội</p>
-          <p class="mt-2">Email: info@tuvanyte.vn</p>
-          <p>Điện thoại: (024) 1234 5678</p>
-        </address>
+        <h4 class="text-lg font-semibold mb-4">Bài viết</h4>
+        <div :for={item <- @new_recents} class="new_recents" phx-click={JS.navigate("/health-consultation/#{item["title"]}?category=#{item["title"]}")}>
+          <div class="new_recents__img overflow-hidden">
+            <img src={"/assets/images/posts/#{item["category"]}.jpg"} alt={item["category"]} > 
+          </div>
+          <div>
+            <h5 class="new_recents__title"><%= item["name"] %></h5>
+            <p class="new_recents__desc"><%= item["data"] %></p>
+            <p class="new_recents__date"><%= item["updated_at"] %></p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-      <p>&copy; {new Date().getFullYear()} Tư Vấn Sức Khỏe. Tất cả các quyền được bảo lưu.</p>
+      <p>Copyright © <a href="https://99tek.com">AI Health</a> All Right Reverved. Powered by <a href="https://99tek.com">99Tek</a>.</p>
     </div>
   </div>
 </footer>

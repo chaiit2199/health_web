@@ -3,7 +3,7 @@ defmodule FetchAPI do
   def get(path) do
     base_url_api = Application.get_env(:health_web, :base_url)
     origin = (Application.get_env(:health_web, HealthWebWeb.Endpoint)[:host] || "")
-    url = "#{base_url_api}/#{path}" |> IO.inspect(label: "da")
+    url = "#{base_url_api}/#{path}"
     headers = [{"origin", origin}]
 
     case HTTPoison.get(url, headers) do
