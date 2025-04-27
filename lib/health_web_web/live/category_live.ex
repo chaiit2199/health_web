@@ -74,7 +74,8 @@ defmodule HealthWebWeb.CategoryLive do
   end
 
   defp fetch_category_post(params) do
-    FetchAPI.get("category?category=#{params["params"]}&page=#{params["page"] || 1}")
+    is_params = params["params"] || "dinh-duong"
+    FetchAPI.get("category?category=#{is_params}&page=#{params["page"] || 1}")
   end
 
   def get_category(id, category) do

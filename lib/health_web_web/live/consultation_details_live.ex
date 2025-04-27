@@ -18,7 +18,11 @@ defmodule HealthWebWeb.ConsultationDetailsLive do
   end
 
   def handle_params(params, uri, socket) do
-    response = fetch_diseases_details(params["params_id"])
+    dafault = socket.assigns.recents
+    |> List.first()
+    |> Map.get("title")
+
+    response = fetch_diseases_details(params["params_id"] || dafault)
 
     case get_in(response, ["response", "data"]) do
       nil ->
