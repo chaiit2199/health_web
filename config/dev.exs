@@ -16,7 +16,7 @@ config :health_web, HealthWebWeb.Endpoint,
   secret_key_base: "u4T8fNqor+PBGXHS9mblMlZOkg9suUxoGyR5Rsn2xTbOJRHOpDk7LdEEkRB5uSl/",
   watchers: [
     asset_copy:
-      {Phoenix.Copy, :watch, [:default]},
+      {Phoenix.Copy, :watch, [[:default, :public_file]]},
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]},
     sass: {DartSass, :install_and_run, [:default, ~w(--watch)]}

@@ -38,11 +38,15 @@ config :esbuild,
 
 # Configure tailwind (the version is required)
 config :phoenix_copy,
-  default: [
-    source: Path.expand("../assets/", __DIR__),
-    destination: Path.expand("../priv/static/assets/", __DIR__),
-    debounce: 100
+   [
+    default: ["../assets/", "../priv/static/assets/"],
+    public_file: ["../public_file", "../priv/static/"]
   ]
+  |> Enum.map(fn {key, [src, dest]} ->
+    {key, [source: Path.expand(src, __DIR__), destination: Path.expand(dest, __DIR__), debounce: 100]}
+
+  end)
+  |> Enum.into([])
 
 config :dart_sass,
   version: "1.54.5",

@@ -66,13 +66,13 @@ defmodule HealthWeb.MixProject do
       setup: ["deps.get", "assets.setup", "assets.build"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
       "assets.build": [
-        "phx.copy default",
+        "phx.copy default public_file",
         "esbuild default",
         "sass default",
         "tailwind default"
       ],
       "assets.deploy": [
-        "phx.copy default",
+        "phx.copy default public_file",
         "sass default",
         "tailwind default --minify",
         "esbuild default --minify",
