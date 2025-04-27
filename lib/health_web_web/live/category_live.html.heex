@@ -40,16 +40,17 @@
     <section class="pb-10 px-4 bg-white" id="category_section">
       <div class="container-fluid max-w-xl details_post">
         <div>
-          <div class="post" :for={item <- @category_post} phx-click={JS.navigate("/health-consultation/#{item["title"]}")}>
+          <a href={"/health-consultation/#{item["title"]}"} class="post" :for={item <- @category_post}>
             <h3 class="post__title"><%= item["name"] %></h3>
             <p class="post__desc"><%= item["data"] %></p>
             <div class="post__date"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar h-3 w-3 mr-1"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg><span><%= item["updated_at"] %></span>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </section> 
-    <.panigation :if={length(@category_post) > 10} page={@current_page} page_end={@page_end}></.panigation> 
+    
+    <.panigation page={@current_page} page_end={@page_end}></.panigation> 
 
     <section class="pb-20 px-4 md:pb-10" id="disclaim">
       <div class="container-fluid max-w-xl">

@@ -69,6 +69,10 @@ defmodule HealthWebWeb.CategoryLive do
     )
   end
 
+  def handle_event("change_page", %{"page" => page}, socket) do
+    {:noreply, socket |> push_patch(to: "/category/#{socket.assigns.current_category}?page=#{page}")}
+  end
+
   defp fetch_category_post(params) do
     FetchAPI.get("category?category=#{params["params"]}&page=#{params["page"] || 1}")
   end

@@ -1,7 +1,7 @@
 <div class="post-slide swiper-container -m-4 !md:m-0" phx-hook="slide" id="slideHookPost">
 <div class="swiper-wrapper">
   <div class="swiper-slide" :for={recents <- @recents}>
-    <div class="post-recent post_img__effect" phx-click={JS.navigate("/health-consultation/#{recents["title"]}")}>
+    <a class="post-recent post_img__effect" href={"/health-consultation/#{recents["title"]}"}>
       <div class="relative h-48 w-full overflow-hidden">
         <img class="post-recent__img" alt={recents["category"]} loading="lazy" decoding="async" data-nimg="fill" src={"/assets/images/posts/#{recents["category"]}.jpg"}>
       </div>
@@ -14,7 +14,7 @@
         <h3 class="post-recent__title"><%= recents["name"] %></h3>
         <p class="post-recent__desc"><%= recents["data"] %></p> 
       </div>
-    </div>
+    </a>
   </div>
  
 </div>

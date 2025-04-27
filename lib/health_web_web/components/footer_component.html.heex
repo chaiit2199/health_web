@@ -61,7 +61,7 @@
       </div>
       <div>
         <h4 class="text-lg font-semibold mb-4">Bài viết</h4>
-        <div :for={item <- @new_recents} class="new_recents" phx-click={JS.navigate("/health-consultation/#{item["title"]}?category=#{item["title"]}")}>
+        <a href={"/health-consultation/#{item["title"]}?category=#{item["title"]}"} :for={item <- @new_recents} class="new_recents">
           <div class="new_recents__img overflow-hidden">
             <img src={"/assets/images/posts/#{item["category"]}.jpg"} alt={item["category"]} > 
           </div>
@@ -70,7 +70,7 @@
             <p class="new_recents__desc"><%= item["data"] %></p>
             <p class="new_recents__date"><%= item["updated_at"] %></p>
           </div>
-        </div>
+        </a>
       </div>
     </div>
     <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
