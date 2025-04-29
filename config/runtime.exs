@@ -8,6 +8,9 @@ if config_env() == :prod do
   https_port = String.to_integer(System.get_env("HTTPS_PORT") || "80")
   secret_key_base = System.get_env("SECRET_KEY_BASE") || raise ("No SECRET_KEY_BASE config.")
   base_url = System.get_env("BASE_URL")
+  fbpost_crontab = System.get_env("FBPOST_CRONTAB") || raise ("No FBPOST_CRONTAB config.")
+  page_id = System.get_env("PAGE_ID") || raise ("No PAGE_ID config.")
+  access_token = System.get_env("ACCESS_TOKEN") || raise ("No ACCESS_TOKEN config.")
 
   protocol_options = [
     secure_renegotiations: true,
@@ -45,5 +48,8 @@ if config_env() == :prod do
 
   config :health_web,
     env: config_env(),
-    base_url: base_url
+    base_url: base_url,
+    fbpost_crontab: fbpost_crontab,
+    page_id: page_id,
+    access_token: access_token
 end

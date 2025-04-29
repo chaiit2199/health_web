@@ -58,8 +58,10 @@ config :health_web, HealthWebWeb.Endpoint,
 
 config :health_web,
   env: config_env(),
-  base_url: "http://localhost:4000/api"
-
+  base_url: "http://localhost:4000/api",
+  FBPOST_CRONTAB: "* * * * *",
+  page_id: "106247004965721",
+  access_token: "EAAGmK9PTDqQBO2swocCeQMZBVqgq9hz1BnuFtWvmG8j6OmZC9YSlJJPZADOkvvoraYIcBVEsZBvMLOJmX2rMf1cnpxFhYZA9AmjQAjBAnAVPBA0aNoCMAJonM7xCnMZCw2tW6CkSG5Y8GSeOZCvHk6TJb05UMJMMTjiWkGZCRqWINK9Il4z3DkbCxxoJGw0yztoZD"
 
 # Enable dev routes for dashboard and mailbox
 config :health_web, dev_routes: true

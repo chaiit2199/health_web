@@ -4,15 +4,12 @@ defmodule HealthWeb.Application do
   @moduledoc false
 
   use Application
+  alias FacebookPoster
 
   @impl true
   def start(_type, _args) do
-    # topologies = [
-    #   example: [
-    #     strategy: Cluster.Strategy.Epmd,
-    #     config: [hosts: [:"backend_pubsub@10.140.18.235"]],
-    #   ]
-    # ]
+    fbpost_crontab = Application.get_env(:health_web, :FBPOST_CRONTAB) || "0 0 * * *"
+
     children = [
       # Start the Telemetry supervisor
       HealthWebWeb.Telemetry,
@@ -22,11 +19,11 @@ defmodule HealthWeb.Application do
       {Finch, name: HealthWeb.Finch},
       # Start the Endpoint (http/https)
 
-
-      # {Cluster.Supervisor, [topologies, [name: HealthWeb.ClusterSupervisor]]},
-      # Supervisor.child_spec({Phoenix.PubSub, name: BackendPubsub.PubSub}, id: Trading.InternalPubSub),
-
-      HealthWebWeb.Endpoint
+      HealthWebWeb.Endpoint,
+      %{
+        id: "daily_post_fb",
+        start: {SchedEx, :run_every, [FacebookPoster, :post, [], fbpost_crontab]}
+      },
       # Start a worker by calling: HealthWeb.Worker.start_link(arg)
       # {HealthWeb.Worker, arg}
     ]

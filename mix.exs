@@ -51,7 +51,8 @@ defmodule HealthWeb.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:libcluster, "~> 3.3"},
       {:phoenix_pubsub, "~> 2.0"},
-       {:httpoison, "~> 2.0"}
+      {:httpoison, "~> 2.0"},
+      {:sched_ex, "~> 1.0"}
     ]
   end
 
