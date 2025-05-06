@@ -44,7 +44,7 @@ defmodule FacebookPoster do
 
         headers = [{"Content-Type", "application/x-www-form-urlencoded"}]
 
-        case HTTPoison.post(graph_url, body, headers) do
+        case HTTPoison.post(graph_url, body, headers, timeout: 60_000) do
           {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
             IO.puts("✅ Đã share bài: #{disease["name"]} thành công!")
             IO.inspect(body)
