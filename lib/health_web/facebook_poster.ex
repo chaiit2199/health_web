@@ -35,7 +35,7 @@ defmodule FacebookPoster do
     if diseases != [] do
       Enum.each(diseases, fn disease ->
         IO.inspect(disease, label: "share_postxxx")
-        message = "📢 Bài viết hôm nay: #{disease["name"]}"
+        message = "📢 Bài viết #{disease["updated_at"]}: #{disease["name"]}"
         body = URI.encode_query(%{
           message: message,
           link: "https://99tek.com/health-consultation/#{disease["title"]}",
